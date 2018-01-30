@@ -1,4 +1,4 @@
-const ZEEKEY = '';
+const ZEEKEY = 'AIzaSyAHrofdI7wqp3cqiMNxRmpK50iDrtoCfgo';
 const ENDPOINT = 'https://www.googleapis.com/youtube/v3/search';
 
 function getData(query_phrase, callback) {
