@@ -11,8 +11,20 @@ function getData(query_phrase, callback) {
   $.getJSON(ENDPOINT, query, callback)
 }
 
+
+function makeImageHtml(item) {
+  const url = item.snippet.thumbnails.default.url;
+  const title = item.snippet.title;
+  return `
+   <div class="search-result">
+      <h2>${title}</h2>
+      <img src="${url}" alt="${title}">
+   </div>
+  `}
+
 function displayResults(data) {
-  console.log(data);
+  const resultHTML = data.items.map(makeImageHtml);
+  $('.js-results').html(resultHTML);
 }
 
 
