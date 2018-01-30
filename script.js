@@ -1,4 +1,4 @@
-const ZEEKEY = 'AIzaSyAkkPLJ01lsIR_BUSaqt05A6QseNQHI05M';
+const ZEEKEY = '';
 const ENDPOINT = 'https://www.googleapis.com/youtube/v3/search';
 
 function getData(query_phrase, callback) {
@@ -13,7 +13,7 @@ function getData(query_phrase, callback) {
 
 
 function makeImageHtml(item) {
-  const url = item.snippet.thumbnails.default.url;
+  const url = item.snippet.thumbnails.medium.url;
   const title = item.snippet.title;
   return `
    <div class="search-result">
