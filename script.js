@@ -11,22 +11,21 @@ function getData(query_phrase, callback) {
   $.getJSON(ENDPOINT, query, callback)
 }
 
-
 function makeImageHtml(item) {
-  const url = item.snippet.thumbnails.medium.url;
+  let resultItem = $('.js-result-template').children().clone();
+  const imgUrl = item.snippet.thumbnails.medium.url;
   const title = item.snippet.title;
-  return `
-   <div class="search-result">
-      <h2>${title}</h2>
-      <img src="${url}" alt="${title}">
-   </div>
-  `}
+  const videoUrl = `https://www.youtube.com/watch?v=${item.id.videoId}`
+  resultItem.find('a').attr('href', videoUrl);
+  resultItem.find('img').attr('src', imgUrl);
+  resultItem.find('alt').attr('src', title);
+  return resultItem
+}
 
 function displayResults(data) {
   const resultHTML = data.items.map(makeImageHtml);
   $('.js-results').html(resultHTML);
 }
-
 
 function watchSubmit() {
 	$('.js-submit').click(event => {
@@ -38,5 +37,30 @@ function watchSubmit() {
 
 	})
 }
+
+window.document.onkeydown = function(e) {
+  if (!e) {
+    e = event;
+  }
+  if (e.keyCode == 27) {
+    lightbox_close();
+  }
+}
+
+function lightbox_open() {
+  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+  window.scrollTo(0, 0);
+  document.getElementById('light').style.display = 'block';
+  document.getElementById('fade').style.display = 'block';
+  lightBoxVideo.play();
+}
+
+function lightbox_close() {
+  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+  document.getElementById('light').style.display = 'none';
+  document.getElementById('fade').style.display = 'none';
+  lightBoxVideo.pause();
+}
+
 
 $(watchSubmit)

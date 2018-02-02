@@ -6,7 +6,7 @@
 	<title>Thinkful Tube</title>
 </head>
 <body role="main">
-	<section>
+	<section class="search-box">
 		<h1>Thinkful Tube</h1>
 		<span>Enter a search term to find some videos.</span>
 		<form action="" method="post">
@@ -16,7 +16,17 @@
 			<button class="js-submit">Submit</button>
 		</form>
 	</section>
-	<section class="js-results"></section>
+	<section class="results js-results">
+	</section>
+		<div class="js-result-template">
+			<div class="result-item">
+	      <a href="" target="_blank">
+	        <img src="" alt="">
+	      </a>
+	   </div>
+   </div>
+
+	
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="script.js"></script>

@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+main {
+  max-width: 600px;
+}
+
 h2 {
   font-size: 18px;
+}
+
+.result-item {
+  margin-left: 15px;
+  margin-top: 15px;
+  display: inline-block;
 }
