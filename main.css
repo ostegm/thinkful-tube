@@ -1,13 +1,30 @@
-* {
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: Sans-Serif;
+  /*font-size: 1.2rem;*/
+  color: white;
+  background-color: #4684ff;
+  padding: 0;
+  margin: 0;
+}
+
+body * {
   box-sizing: border-box;
 }
 
-main {
+/*main {
   max-width: 600px;
 }
 
 h2 {
   font-size: 18px;
+}
+*/
+input {
+  display: block;
 }
 
 .result-item {

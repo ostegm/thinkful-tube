@@ -7,12 +7,13 @@ function getData(query_phrase, callback) {
     q: query_phrase,
     key: ZEEKEY,
   }
-  console.log(`Preparing to send query: ${query}`);
   $.getJSON(ENDPOINT, query, callback)
 }
 
 function makeImageHtml(item) {
-  let resultItem = $('.js-result-template').children().clone();
+  let resultItem = $('.js-result-template')
+    .children()
+    .clone();
   const imgUrl = item.snippet.thumbnails.medium.url;
   const title = item.snippet.title;
   const videoUrl = `https://www.youtube.com/watch?v=${item.id.videoId}`
@@ -24,17 +25,19 @@ function makeImageHtml(item) {
 
 function displayResults(data) {
   const resultHTML = data.items.map(makeImageHtml);
+  console.log(resultHTML)
   $('.js-results').prop('hidden', false).html(resultHTML);
 }
 
 function watchSubmit() {
-	$('.js-submit').submit(event => {
-    event.preventDefault();
-    const q = $('#search-term').val()
-    $('#search-term').val("")
+  const searchForm = $('form[name="youtube-search"]');
+  const searchBox = $('input[name="query"]');
 
+	searchForm.submit(e => {
+    e.preventDefault();
+    const q = searchBox.val()
+    searchBox.val("")
     getData(q, displayResults)
-
 	})
 }
 
