@@ -28,7 +28,7 @@ function displayResults(data) {
 }
 
 function watchSubmit() {
-	$('.js-submit').click(event => {
+	$('.js-submit').submit(event => {
     event.preventDefault();
     const q = $('#search-term').val()
     $('#search-term').val("")
