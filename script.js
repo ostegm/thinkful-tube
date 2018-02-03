@@ -25,7 +25,7 @@ function makeImageHtml(item) {
 
 function displayResults(data) {
   const resultsDiv = $('.js-results')
-  const resultHeader = `<h2>Showing ${data.items.length} results:</h2`
+  const resultHeader = `<p class="results-text">Showing ${data.items.length} results:</h2`
   const resultHTML = data.items.map(makeImageHtml);
   resultsDiv
     .prop('hidden', false)
