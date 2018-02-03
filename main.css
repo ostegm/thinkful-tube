@@ -32,3 +32,13 @@ input {
   margin-top: 15px;
   display: inline-block;
 }
+
+.user a:hover,
+.user a:focus,
+.search input:focus,
+.search button:focus, 
+.results a:hover,
+.results a:focus {
+  outline: 5px dotted salmon;
+}
+}

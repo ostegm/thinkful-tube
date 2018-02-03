@@ -24,9 +24,14 @@ function makeImageHtml(item) {
 }
 
 function displayResults(data) {
+  const resultsDiv = $('.js-results')
+  const resultHeader = `<h2>Showing ${data.items.length} results:</h2`
   const resultHTML = data.items.map(makeImageHtml);
-  console.log(resultHTML)
-  $('.js-results').prop('hidden', false).html(resultHTML);
+  resultsDiv
+    .prop('hidden', false)
+    .html(resultHeader)
+    .append(resultHTML);
+
 }
 
 function watchSubmit() {
