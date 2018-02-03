@@ -18,13 +18,13 @@ function makeImageHtml(item) {
   const videoUrl = `https://www.youtube.com/watch?v=${item.id.videoId}`
   resultItem.find('a').attr('href', videoUrl);
   resultItem.find('img').attr('src', imgUrl);
-  resultItem.find('alt').attr('src', title);
+  resultItem.find('img').attr('alt', title);
   return resultItem
 }
 
 function displayResults(data) {
   const resultHTML = data.items.map(makeImageHtml);
-  $('.js-results').html(resultHTML);
+  $('.js-results').prop('hidden', false).html(resultHTML);
 }
 
 function watchSubmit() {
@@ -36,30 +36,6 @@ function watchSubmit() {
     getData(q, displayResults)
 
 	})
-}
-
-window.document.onkeydown = function(e) {
-  if (!e) {
-    e = event;
-  }
-  if (e.keyCode == 27) {
-    lightbox_close();
-  }
-}
-
-function lightbox_open() {
-  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
-  window.scrollTo(0, 0);
-  document.getElementById('light').style.display = 'block';
-  document.getElementById('fade').style.display = 'block';
-  lightBoxVideo.play();
-}
-
-function lightbox_close() {
-  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
-  document.getElementById('light').style.display = 'none';
-  document.getElementById('fade').style.display = 'none';
-  lightBoxVideo.pause();
 }
 
 

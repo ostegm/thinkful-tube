@@ -5,20 +5,23 @@
 <head>
 	<title>Thinkful Tube</title>
 </head>
-<body role="main">
+<body>
 	<section class="search-box">
 		<h1>Thinkful Tube</h1>
-		<span>Enter a search term to find some videos.</span>
 		<form action="" method="post">
-			<label for="search-term">
-				<input id ="search-term" type="text" name="search-term">
-			</label>
-			<button class="js-submit">Submit</button>
+			<label for="search-term">Enter a search term to find some videos.</label>
+			<input id ="search-term" type="text" name="search-term" required>
+			<button class="js-submit">Search Videos</button>
 		</form>
 	</section>
-	<section class="results js-results">
-	</section>
-		<div class="js-result-template">
+
+	<!-- Results Container hidden on load. -->
+	<main role="main" class="results js-results" hidden>
+	</main>
+
+
+	<!-- Template search result -->
+		<div class="js-result-template" hidden>
 			<div class="result-item">
 	      <a href="" target="_blank">
 	        <img src="" alt="">
