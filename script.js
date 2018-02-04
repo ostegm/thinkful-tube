@@ -1,13 +1,13 @@
 const ZEEKEY = 'AIzaSyAHrofdI7wqp3cqiMNxRmpK50iDrtoCfgo';
 const ENDPOINT = 'https://www.googleapis.com/youtube/v3/search';
 
-function getData(query_phrase, callback) {
+function getData(queryPhrase, callback) {
   const query = {
     part: 'snippet',
-    q: query_phrase,
+    q: queryPhrase,
     key: ZEEKEY,
-  }
-  $.getJSON(ENDPOINT, query, callback)
+  };
+  $.getJSON(ENDPOINT, query, callback);
 }
 
 function makeImageHtml(item) {
@@ -16,16 +16,16 @@ function makeImageHtml(item) {
     .clone();
   const imgUrl = item.snippet.thumbnails.medium.url;
   const title = item.snippet.title;
-  const videoUrl = `https://www.youtube.com/watch?v=${item.id.videoId}`
+  const videoUrl = `https://www.youtube.com/watch?v=${item.id.videoId}`;
   resultItem.find('a').attr('href', videoUrl);
   resultItem.find('img').attr('src', imgUrl);
   resultItem.find('img').attr('alt', title);
-  return resultItem
+  return resultItem;
 }
 
 function displayResults(data) {
-  const resultsDiv = $('.js-results')
-  const resultHeader = `<p class="results-text">Showing ${data.items.length} results:</h2`
+  const resultsDiv = $('.js-results');
+  const resultHeader = `<p class="results-text">Showing ${data.items.length} results:</h2`;
   const resultHTML = data.items.map(makeImageHtml);
   resultsDiv
     .prop('hidden', false)
@@ -38,13 +38,12 @@ function watchSubmit() {
   const searchForm = $('form[name="youtube-search"]');
   const searchBox = $('input[name="query"]');
 
-	searchForm.submit(e => {
+  searchForm.submit(e => {
     e.preventDefault();
-    const q = searchBox.val()
-    searchBox.val("")
-    getData(q, displayResults)
-	})
+    const q = searchBox.val();
+    searchBox.val('');
+    getData(q, displayResults);
+  });
 }
 
-
-$(watchSubmit)
+$(watchSubmit);
